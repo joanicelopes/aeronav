@@ -1,0 +1,74 @@
+[
+  {
+    "icao": "GVAC",
+    "name": "Amílcar Cabral International Airport",
+    "city": "Sal",
+    "country": "Cape Verde",
+    "latitude": 16.7414,
+    "longitude": -22.9494,
+    "elevation": 177
+  },
+  {
+    "icao": "KJFK",
+    "name": "John F. Kennedy International Airport",
+    "city": "New York",
+    "country": "United States",
+    "latitude": 40.6413,
+    "longitude": -73.7781,
+    "elevation": 13
+  },
+  {
+    "icao": "EGLL",
+    "name": "London Heathrow Airport",
+    "city": "London",
+    "country": "United Kingdom",
+    "latitude": 51.47,
+    "longitude": -0.4543,
+    "elevation": 83
+  },
+  {
+    "icao": "RJTT",
+    "name": "Tokyo Haneda Airport",
+    "city": "Tokyo",
+    "country": "Japan",
+    "latitude": 35.5494,
+    "longitude": 139.7798,
+    "elevation": 21
+  },
+  {
+    "icao": "YSSY",
+    "name": "Sydney Kingsford Smith Airport",
+    "city": "Sydney",
+    "country": "Australia",
+    "latitude": -33.9399,
+    "longitude": 151.1753,
+    "elevation": 21
+  },
+  {
+    "icao": "FAOR",
+    "name": "O.R. Tambo International Airport",
+    "city": "Johannesburg",
+    "country": "South Africa",
+    "latitude": -26.1392,
+    "longitude": 28.246,
+    "elevation": 1694
+  },
+  {
+    "icao": "SBGR",
+    "name": "São Paulo/Guarulhos International Airport",
+    "city": "São Paulo",
+    "country": "Brazil",
+    "latitude": -23.4356,
+    "longitude": -46.4731,
+    "elevation": 750
+  },
+  {
+    "icao": "OMDB",
+    "name": "Dubai International Airport",
+    "city": "Dubai",
+    "country": "United Arab Emirates",
+    "latitude": 25.2532,
+    "longitude": 55.3657,
+    "elevation": 62
+  }
+]
