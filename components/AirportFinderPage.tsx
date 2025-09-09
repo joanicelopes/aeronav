@@ -3,9 +3,10 @@
 import { useState, useEffect } from "react"
 import { SearchInput } from "./SearchInput"
 import { AirportCard } from "./AirportCard"
-import { WorldMap } from "./WorldMap"
 import { AlertCircle } from "lucide-react"
 import type { Airport } from "./airport-data"
+import { Loader2 } from "lucide-react";
+import { ReactTyped } from "react-typed";
 
 export function AirportFinderPage() {
   const [searchTerm, setSearchTerm] = useState("")
@@ -37,9 +38,6 @@ export function AirportFinderPage() {
   }, [])
 
   const handleSearch = () => {
-    console.log("[v0] Search triggered with term:", searchTerm)
-    console.log("[v0] Available airports:", airports.length)
-
     if (!searchTerm.trim()) {
       setError("Please enter an IATA or ICAO code")
       return
@@ -50,7 +48,6 @@ export function AirportFinderPage() {
         (airport.icao && airport.icao.toLowerCase() === searchTerm.toLowerCase()) ||
         (airport.code && airport.code.toLowerCase() === searchTerm.toLowerCase()),
     )
-    console.log("[v0] Found airport:", airport)
 
     if (airport) {
       setSelectedAirport(airport)
@@ -68,8 +65,8 @@ export function AirportFinderPage() {
 
   if (isLoading) {
     return (
-      <div className="relative z-10 min-h-screen flex flex-col items-center justify-center p-6 bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900">
-        <div className="text-white text-lg">Loading airports data...</div>
+      <div className="relative z-10 min-h-screen flex flex-col items-center justify-center p-6">
+        <Loader2 className="h-8 w-8 animate-spin text-foreground" />
       </div>
     )
   }
@@ -81,11 +78,17 @@ export function AirportFinderPage() {
       {/* Main content */}
       <div className="relative z-10 min-h-screen flex flex-col items-center justify-center p-6 space-y-8 pt-32">
         {/* Header */}
-        <div className="text-center space-y-4 mb-8">
-          <h1 className="text-5xl font-light text-white tracking-tight">
-            <span className="text-orange-500">Find Airport</span>
-          </h1>
-        </div>
+          <div className="text-center space-y-4 mb-8">
+            <h1 className="text-6xl font-light text-foreground tracking-tight">
+              <span className="text-black dark:text-orange-400 font-montserrat">
+                <ReactTyped
+                  strings={["Find Airport"]}
+                  typeSpeed={40}
+                  showCursor={false}
+                />
+              </span>
+            </h1>
+          </div>
 
         {/* Search input */}
         <SearchInput
