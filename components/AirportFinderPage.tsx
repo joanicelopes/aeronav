@@ -83,7 +83,7 @@ export function AirportFinderPage() {
         {/* Header */}
         <div className="text-center space-y-4 mb-8">
           <h1 className="text-5xl font-light text-white tracking-tight">
-            Airport <span className="text-blue-400">Finder</span>
+            <span className="text-orange-500">Find Airport</span>
           </h1>
         </div>
 

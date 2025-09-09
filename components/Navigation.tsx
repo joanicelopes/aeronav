@@ -2,6 +2,7 @@ import { Map, Search } from 'lucide-react';
 import { Plane } from "@/components/ui/plane";
 import { Globe } from "@/components/ui/Globe";
 import { Compass } from "@/components/ui/Compass";
+import { ThemeToggle } from "./theme-toggle";
 
 
 interface NavigationProps {
@@ -23,7 +24,7 @@ export function Navigation({ currentPage, onPageChange }: NavigationProps) {
           <div className="flex items-center justify-between">
             {/* Logo/Brand */}
             <div className="text-white font-medium tracking-tight">
-              <Plane className="w-2 h-2 text-blue-400 animate-bounce" />
+              <Plane className="w-2 h-2 text-orange-200 animate-bounce" />
             </div>
 
             {/* Navigation Links */}
@@ -33,7 +34,7 @@ export function Navigation({ currentPage, onPageChange }: NavigationProps) {
                   key={item.id}
                   onClick={() => onPageChange(item.id)}
                   className={`flex items-center px-4 py-2 rounded-xl transition-all duration-300 ${currentPage === item.id
-                      ? 'bg-blue-500/30 text-blue-200 border border-blue-400/30 shadow-lg backdrop-blur-sm'
+                      ? 'bg-orange-600 text-orange-100 border border-orange-400/30 shadow-lg backdrop-blur-sm'
                       : 'text-white/70 hover:text-white hover:bg-white/10'
                     }`}
                 >
@@ -41,6 +42,11 @@ export function Navigation({ currentPage, onPageChange }: NavigationProps) {
                   <span>{item.label}</span>
                 </button>
               ))}
+              
+              {/* Theme Toggle */}
+              <div className="ml-4">
+                <ThemeToggle />
+              </div>
             </div>
           </div>
 

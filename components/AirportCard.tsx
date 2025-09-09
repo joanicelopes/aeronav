@@ -15,7 +15,7 @@ export function AirportCard({ airport }: AirportCardProps) {
         
         {/* Content */}
         <div className="relative space-y-6">
-          {/* ICAO Code Badge */}
+          {/* Code Badge */}
           <div className="inline-flex items-center px-4 py-2 rounded-full bg-blue-500/20 border border-blue-400/30 text-blue-200 backdrop-blur-sm">
             <Plane className="w-4 h-4 mr-2" />
             <span className="font-mono tracking-wider">{`${airport.icao}/${airport.code}`}</span>
