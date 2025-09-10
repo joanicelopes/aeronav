@@ -3,7 +3,7 @@ import { Plane } from "@/components/ui/plane";
 import { Globe } from "@/components/ui/Globe";
 import { Compass } from "@/components/ui/Compass";
 import { ThemeToggle } from "./theme-toggle";
-
+import Image from "next/image";
 
 interface NavigationProps {
   currentPage: string;
@@ -24,7 +24,14 @@ export function Navigation({ currentPage, onPageChange }: NavigationProps) {
           <div className="flex items-center justify-between">
             {/* Logo/Brand */}
             <div className="text-white font-medium tracking-tight">
-              <Plane className="w-2 h-2 text-orange-200 animate-bounce" />
+              <Image
+                src="/icon-b.svg"
+                alt="Plane"
+                width={50}
+                height={50}
+                
+              />
+             {/*  <Plane className="w-2 h-2 text-orange-200 animate-bounce" /> */}
             </div>
 
             {/* Navigation Links */}

@@ -16,7 +16,7 @@ export function AirportCard({ airport }: AirportCardProps) {
         {/* Content */}
         <div className="relative space-y-6">
           {/* Code Badge */}
-          <div className="inline-flex items-center px-4 py-2 rounded-full bg-blue-500/20 border border-blue-400/30 text-blue-200 backdrop-blur-sm">
+          <div className="inline-flex items-center px-4 py-2 rounded-full bg-orange-500 border border-orange-400/30 text-orange-200 backdrop-blur-sm">
             <Plane className="w-4 h-4 mr-2" />
             <span className="font-mono tracking-wider">{`${airport.icao}/${airport.code}`}</span>
 
@@ -63,7 +63,7 @@ export function AirportCard({ airport }: AirportCardProps) {
       </div>
       
       {/* Outer glow effect */}
-      <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-blue-500/20 to-purple-500/20 blur-xl -z-10 opacity-50" />
+      <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-gray-600/30 to-black/20 blur-xl -z-10 opacity-70" />
     </div>
   );
 }

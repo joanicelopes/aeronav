@@ -30,13 +30,13 @@ export function SearchInput({ value, onChange, onSearch, placeholder = "Enter IC
       {/* Glass container */}
       <div
         className={`relative backdrop-blur-lg bg-white/10 border rounded-2xl transition-all duration-300 ${
-          isFocused ? "border-blue-400/50 shadow-lg shadow-blue-500/20" : "border-white/20"
+          isFocused ? "border-black dark:border-orange-500/50 shadow-lg shadow-orange-400/20" : "border-white/20"
         }`}
       >
         {/* Search icon - now clickable */}
         <button
           onClick={onSearch}
-          className="absolute left-4 top-1/2 transform -translate-y-1/2 hover:text-blue-400 transition-colors"
+          className="absolute left-4 top-1/2 transform -translate-y-1/2 hover:text-orange-400 transition-colors"
         >
           <Search className="w-5 h-5 text-white/60" />
         </button>
@@ -69,7 +69,7 @@ export function SearchInput({ value, onChange, onSearch, placeholder = "Enter IC
 
       {/* Subtle glow effect */}
       <div
-        className={`absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/10 to-purple-500/10 blur-lg transition-opacity duration-300 -z-10 ${
+        className={`absolute inset-0 rounded-2xl bg-gradient-to-r from-orange-500/10 to-red-400/10 blur-lg transition-opacity duration-300 -z-10 ${
           isFocused ? "opacity-100" : "opacity-0"
         }`}
       />

@@ -80,7 +80,7 @@ export function AirportFinderPage() {
         {/* Header */}
           <div className="text-center space-y-4 mb-8">
             <h1 className="text-6xl font-light text-foreground tracking-tight">
-              <span className="text-black dark:text-orange-400 font-montserrat">
+              <span className="text-black dark:text-orange-500 font-montserrat">
                 <ReactTyped
                   strings={["Find Airport"]}
                   typeSpeed={40}

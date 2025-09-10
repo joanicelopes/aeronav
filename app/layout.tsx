@@ -10,7 +10,17 @@ const montserrat = Montserrat({ subsets: ["latin"] })
 export const metadata: Metadata = {
   title: "AeroNav",
   description: "Find airport information by code",
-    generator: 'v0.app'
+  generator: 'v0.app',
+  manifest: '/manifest.json',
+  icons: {
+    icon: [
+      { url: '/icon-b.svg', sizes: '32x32', type: 'image/svg' },
+      { url: '/icon-b.svg', sizes: '16x16', type: 'image/svg' }
+    ],
+    apple: [
+      { url: '/icon-b.svg', sizes: '180x180', type: 'image/svg' }
+    ]
+  }
 }
 
 export default function RootLayout({
