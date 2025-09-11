@@ -19,7 +19,7 @@ export function MetarModal({ isOpen, onClose, decodedMetar }: MetarModalProps) {
       />
       
       {/* Modal */}
-      <div className="relative w-full max-w-7xl max-h-[100vh] overflow-y-auto">
+      <div className="relative w-full max-w-[90vw] max-h-[80vh] overflow-y-auto">
         <div className="bg-black backdrop-blur-lg border border-white/20 rounded-2xl shadow-2xl">
           {/* Header */}
           <div className="flex items-center justify-between p-6 border-b border-white/20">
