@@ -7,6 +7,7 @@ import { AlertCircle } from "lucide-react"
 import type { Airport } from "./airport-data"
 import { Loader2 } from "lucide-react";
 import { ReactTyped } from "react-typed";
+import { fetchMetarData } from "../lib/weather-utils";
 
 export function AirportFinderPage() {
   const [searchTerm, setSearchTerm] = useState("")
@@ -14,6 +15,7 @@ export function AirportFinderPage() {
   const [error, setError] = useState<string | null>(null)
   const [airports, setAirports] = useState<Airport[]>([])
   const [isLoading, setIsLoading] = useState(true)
+  const [isLoadingMetar, setIsLoadingMetar] = useState(false)
 
   useEffect(() => {
     const fetchAirports = async () => {
@@ -37,7 +39,7 @@ export function AirportFinderPage() {
     fetchAirports()
   }, [])
 
-  const handleSearch = () => {
+  const handleSearch = async () => {
     if (!searchTerm.trim()) {
       setError("Please enter an IATA or ICAO code")
       return
@@ -50,8 +52,22 @@ export function AirportFinderPage() {
     )
 
     if (airport) {
+      console.log(airport)
       setSelectedAirport(airport)
       setError(null)
+      
+      // Fetch METAR data for the selected airport
+      if (airport.icao) {
+        setIsLoadingMetar(true)
+        try {
+          const metarData = await fetchMetarData(airport)
+          setSelectedAirport(prev => prev ? { ...prev, metar: metarData } : null)
+        } catch (error) {
+          console.error('Error fetching METAR data:', error)
+        } finally {
+          setIsLoadingMetar(false)
+        }
+      }
     } else {
       setSelectedAirport(null)
       setError(`Airport with code "${searchTerm}" not found`)
@@ -110,6 +126,12 @@ export function AirportFinderPage() {
         {selectedAirport && (
           <div className="w-full max-w-lg animate-in fade-in-50 slide-in-from-bottom-4 duration-500">
             <AirportCard airport={selectedAirport} />
+            {isLoadingMetar && (
+              <div className="mt-4 flex items-center justify-center text-white/60">
+                <Loader2 className="h-4 w-4 animate-spin mr-2" />
+                <span>Loading weather data...</span>
+              </div>
+            )}
           </div>
         )}
       </div>
