@@ -35,7 +35,10 @@ export function Navigation({ currentPage, onPageChange }: NavigationProps) {
         <nav className="backdrop-blur-lg bg-white/10 border border-white/20 rounded-2xl px-4 py-3 sm:px-6 sm:py-4 shadow-lg">
           <div className="flex items-center justify-between">
             {/* Logo/Brand */}
-            <div className="text-white font-medium tracking-tight">
+            <button 
+              onClick={() => window.location.reload()}
+              className="text-white font-medium tracking-tight hover:opacity-80 transition-opacity cursor-pointer"
+            >
               <Image
                 src="/icon-b.svg"
                 alt="Plane"
@@ -43,7 +46,7 @@ export function Navigation({ currentPage, onPageChange }: NavigationProps) {
                 height={40}
                 className="sm:w-[50px] sm:h-[50px]"
               />
-            </div>
+            </button>
 
             {/* Desktop Navigation Links */}
             <div className="hidden md:flex items-center space-x-1">
