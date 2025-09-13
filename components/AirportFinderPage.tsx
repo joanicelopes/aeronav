@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import { SearchInput } from "./SearchInput"
 import { AirportCard } from "./AirportCard"
+import { AirportMap } from "./AirportMap"
 import { AlertCircle } from "lucide-react"
 import type { Airport } from "./airport-data"
 import { Loader2 } from "lucide-react";
@@ -122,16 +123,17 @@ export function AirportFinderPage() {
           </div>
         )}
 
-        {/* Airport card */}
+        {/* Airport card and map */}
         {selectedAirport && (
-          <div className="w-full max-w-lg animate-in fade-in-50 slide-in-from-bottom-4 duration-500">
+          <div className="w-full max-w-4xl space-y-6 animate-in fade-in-50 slide-in-from-bottom-4 duration-500">
             <AirportCard airport={selectedAirport} />
             {isLoadingMetar && (
-              <div className="mt-4 flex items-center justify-center text-white/60">
+              <div className="flex items-center justify-center text-white/60">
                 <Loader2 className="h-4 w-4 animate-spin mr-2" />
                 <span>Loading weather data...</span>
               </div>
             )}
+            <AirportMap airport={selectedAirport} />
           </div>
         )}
       </div>
