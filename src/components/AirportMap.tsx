@@ -1,5 +1,7 @@
 'use client'
 
+
+
 import dynamic from 'next/dynamic'
 import type { Airport } from './airport-data'
 

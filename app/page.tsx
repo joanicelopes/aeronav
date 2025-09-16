@@ -1,9 +1,9 @@
 "use client"
 
 import { useState } from 'react';
-import { Navigation } from '../components/Navigation';
-import { AirportFinderPage } from '../components/AirportFinderPage';
-import { MapsPage } from '../components/MapsPage';
+import { Navigation } from '../src/components/Navigation';
+import { AirportFinderPage } from '../src/components/AirportFinderPage';
+import { MapsPage } from '../src/components/MapsPage';
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState('airport-finder');
