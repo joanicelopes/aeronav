@@ -132,24 +132,22 @@
   }
 }
 
-@layer components {
-  /* Wrapper that Leaflet renders around popup content */
-  .glass-popup .leaflet-popup-content-wrapper {
-    @apply bg-white/10 dark:bg-black/30 backdrop-blur-xl
-           border border-white/20 dark:border-white/10
-           rounded-2xl shadow-2xl;
-    /* Optional: tighter spacing so your inner div controls padding */
-    padding: 0;
-  }
+/* Custom Leaflet popup styling for glass effect */
+.custom-popup .leaflet-popup-content-wrapper {
+  background: transparent !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+}
 
-  /* The small triangular tip */
-  .glass-popup .leaflet-popup-tip {
-    @apply bg-white/10 dark:bg-black/30 backdrop-blur-xl
-           border border-white/20 dark:border-white/10;
-  }
+.custom-popup .leaflet-popup-content {
+  margin: 0 !important;
+  width: auto !important;
+  min-width: 280px;
+}
 
-  /* Let your inner content control spacing with Tailwind */
-  .glass-popup .leaflet-popup-content {
-    margin: 0; /* remove Leaflet’s default margin */
-  }
+.custom-popup .leaflet-popup-tip {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  backdrop-filter: blur(16px) !important;
 }
