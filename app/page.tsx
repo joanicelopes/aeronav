@@ -12,7 +12,7 @@ export default function App() {
     switch (currentPage) {
       case 'airport-finder':
         return <AirportFinderPage />;
-      case 'maps':
+      case 'map':
         return <MapsPage />;
       default:
         return <AirportFinderPage />;

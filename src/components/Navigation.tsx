@@ -16,7 +16,7 @@ export function Navigation({ currentPage, onPageChange }: NavigationProps) {
   
   const navItems = [
     { id: 'airport-finder', label: 'Airport Finder', icon: Compass },
-    { id: 'maps', label: 'Maps', icon: Globe }
+    { id: 'map', label: 'Map', icon: Globe }
   ];
 
   const toggleMobileMenu = () => {

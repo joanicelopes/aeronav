@@ -99,7 +99,7 @@ export function AirportFinderPage() {
             <h1 className="text-6xl font-light text-foreground tracking-tight">
               <span className="text-black dark:text-orange-500 font-montserrat">
                 <ReactTyped
-                  strings={["Find Airport"]}
+                  strings={["Find Airports"]}
                   typeSpeed={40}
                   showCursor={false}
                 />
