@@ -1,5 +1,7 @@
 import { X, Thermometer, Droplets, Wind, Eye, Cloud, Gauge } from 'lucide-react'
 import { DecodedMetar, formatWind, formatVisibility } from '../lib/metar-decoder'
+import { createPortal } from 'react-dom'
+import { useEffect, useState } from 'react'
 
 interface MetarModalProps {
   isOpen: boolean
@@ -8,10 +10,16 @@ interface MetarModalProps {
 }
 
 export function MetarModal({ isOpen, onClose, decodedMetar }: MetarModalProps) {
-  if (!isOpen) return null
+  const [mounted, setMounted] = useState(false)
 
-  return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  if (!isOpen || !mounted) return null
+
+  return createPortal(
+    <div className="fixed inset-0 z-[10000] flex items-center justify-center p-4">
       {/* Backdrop */}
       <div 
         className="absolute inset-0 bg-black/50 backdrop-blur-sm"
@@ -166,6 +174,7 @@ export function MetarModal({ isOpen, onClose, decodedMetar }: MetarModalProps) {
           </div>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   )
 }

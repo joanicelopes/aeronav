@@ -45,16 +45,16 @@ export function AirportMapInner({ airport }: AirportMapInnerProps) {
               <div className="relative space-y-4">
                 {/* Airport Name */}
                 <div>
+                  <ReactCountryFlag 
+                      countryCode={airport.country} 
+                      svg 
+                      style={{ width: "2em", height: "2em" }} 
+                    />
                   <h3 className="text-xl font-semibold text-white mb-2">{airport.name}</h3>
                   <div className="flex items-center gap-3 text-white/70 text-sm">
                     <span className="font-mono tracking-wider bg-orange-500/20 px-3 py-1 rounded-full border border-orange-400/30">
                       {airport.icao}/{airport.code}
                     </span>
-                    <ReactCountryFlag 
-                      countryCode={airport.country} 
-                      svg 
-                      style={{ width: "2em", height: "2em" }} 
-                    />
                   </div>
                 </div>
                 
