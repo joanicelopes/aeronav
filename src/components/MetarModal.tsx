@@ -27,8 +27,10 @@ export function MetarModal({ isOpen, onClose, decodedMetar }: MetarModalProps) {
       />
       
       {/* Modal */}
-      <div className="relative w-full max-w-[90vw] max-h-[80vh] overflow-y-auto">
-        <div className="bg-black backdrop-blur-lg border border-white/20 rounded-2xl shadow-2xl">
+      <div className="relative w-full max-w-[40vw] max-h-[80vh] overflow-y-auto">
+        <div className="relative backdrop-blur-lg bg-white/10 border border-white/20 rounded-3xl shadow-2xl">
+          {/* Gradient overlay for extra glass effect */}
+          <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-white/20 via-transparent to-transparent pointer-events-none" />
           {/* Header */}
           <div className="flex items-center justify-between p-6 border-b border-white/20">
             <h2 className="text-2xl font-semibold text-white">Decoded METAR</h2>
@@ -123,7 +125,7 @@ export function MetarModal({ isOpen, onClose, decodedMetar }: MetarModalProps) {
               </div>
               <div className="grid grid-cols-1 gap-1">
                 {decodedMetar.windDirection !== null && (
-                  <div className="flex justify-between items-center text-white bg-black/20 rounded p-1.5">
+                  <div className="flex justify-between items-center text-white ">
                     <span className="font-medium text-xs">Direction</span>
                     <span className="text-white/60 text-xs">
                       {decodedMetar.windDirection}°
@@ -131,7 +133,7 @@ export function MetarModal({ isOpen, onClose, decodedMetar }: MetarModalProps) {
                   </div>
                 )}
                 {decodedMetar.windSpeed !== null && (
-                  <div className="flex justify-between items-center text-white bg-black/20 rounded p-1.5">
+                  <div className="flex justify-between items-center text-white ">
                     <span className="font-medium text-xs">Speed</span>
                     <span className="text-white/60 text-xs">
                       {decodedMetar.windSpeed} kt
@@ -172,6 +174,8 @@ export function MetarModal({ isOpen, onClose, decodedMetar }: MetarModalProps) {
               </div>
             )}
           </div>
+          {/* Subtle inner glow */}
+          <div className="absolute inset-0 rounded-3xl shadow-inner shadow-white/5 pointer-events-none" />
         </div>
       </div>
     </div>,
