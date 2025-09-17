@@ -67,6 +67,7 @@ export function parseFirPoints(csvData: string): FirPoint[] {
     const name = parts[0].trim()
     const latitudeStr = parts[1].trim()
     const longitudeStr = parts[2].trim()
+    const remark = (parts[3] || '').trim()
     
     if (!name || !latitudeStr || !longitudeStr) continue
     
@@ -77,7 +78,8 @@ export function parseFirPoints(csvData: string): FirPoint[] {
       firPoints.push({
         name,
         latitude,
-        longitude
+        longitude,
+        remark
       })
     } catch (error) {
       console.warn(`Failed to parse FIR point ${name}:`, error)

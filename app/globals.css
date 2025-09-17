@@ -132,12 +132,44 @@
   }
 }
 
-/* Custom Leaflet popup styling for glass effect */
+/* Glassmorphism styling for all Leaflet popups */
+.leaflet-popup-content-wrapper {
+  background: rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(16px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3) !important;
+  padding: 0 !important;
+}
+
+.leaflet-popup-content {
+  margin: 0 !important;
+  width: auto !important;
+  min-width: 280px;
+  background: transparent !important;
+  color: #e5e7eb !important;
+}
+
+.leaflet-popup-content h3,
+.leaflet-popup-content p,
+.leaflet-popup-content span,
+.leaflet-popup-content div {
+  color: #e5e7eb !important;
+}
+
+.leaflet-popup-tip {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  backdrop-filter: blur(16px) !important;
+}
+
+/* Custom popup for airport markers (overrides above) */
 .custom-popup .leaflet-popup-content-wrapper {
   background: transparent !important;
   box-shadow: none !important;
   border-radius: 0 !important;
   padding: 0 !important;
+  border: none !important;
 }
 
 .custom-popup .leaflet-popup-content {
@@ -150,4 +182,28 @@
   background: rgba(255, 255, 255, 0.1) !important;
   border: 1px solid rgba(255, 255, 255, 0.2) !important;
   backdrop-filter: blur(16px) !important;
+}
+
+/* Hide close button on all Leaflet popups */
+.leaflet-popup-close-button {
+  display: none !important;
+}
+
+/* World FIR popup sizing */
+.world-fir-popup .leaflet-popup-content-wrapper {
+  max-width: 300px !important;
+}
+
+.world-fir-popup .leaflet-popup-content {
+  min-width: 200px !important;
+  max-width: 300px !important;
+}
+
+/* Center align text inside world FIR popups */
+.world-fir-popup .leaflet-popup-content,
+.world-fir-popup .leaflet-popup-content h3,
+.world-fir-popup .leaflet-popup-content p,
+.world-fir-popup .leaflet-popup-content span,
+.world-fir-popup .leaflet-popup-content div {
+  text-align: center !important;
 }
