@@ -10,6 +10,7 @@ import { calculateFirCenter, calculateFirBounds } from '../lib/fir-utils'
 import 'leaflet/dist/leaflet.css'
 import { useEffect, useMemo, useState } from 'react'
 import { feature } from 'topojson-client'
+import SalTmaLayer from './SalTmaLayer'
 
 // Fix for default markers in react-leaflet
 delete (Icon.Default.prototype as any)._getIconUrl
@@ -66,6 +67,7 @@ export function FirMapInner({ firPoints }: FirMapInnerProps) {
   const [showTmaPoints, setShowTmaPoints] = useState(false)
   const [showAirports, setShowAirports] = useState(true)
   const [showRadioAids, setShowRadioAids] = useState(false)
+  const [showSalTma, setShowSalTma] = useState(true)
 
   // Base style for world FIR boundaries
   const baseFirStyle = () => ({ color: '#f44900', weight: 1, opacity: 0.6, fillOpacity: 0.03 })
@@ -127,10 +129,22 @@ export function FirMapInner({ firPoints }: FirMapInnerProps) {
           <label htmlFor="toggle-tma">TMA points</label>
         </div>
         <div className="flex items-center gap-2">
+          <input id="toggle-saltma" type="checkbox" checked={showSalTma} onChange={(e) => setShowSalTma(e.target.checked)} />
+          <label htmlFor="toggle-saltma">Sal TMA</label>
+        </div>
+        <div className="flex items-center gap-2">
           <input id="toggle-radioaids" type="checkbox" checked={showRadioAids} onChange={(e) => setShowRadioAids(e.target.checked)} />
           <label htmlFor="toggle-radioaids">Radio Aids</label>
         </div>
       </div>
+      {showSalTma && (
+        <div className="absolute z-[1000] top-3 left-3 backdrop-blur-md bg-white/10 border border-white/20 rounded-xl px-3 py-2 text-xs text-white">
+          <div className="font-semibold mb-1">Sal TMA</div>
+          <div>Vertical limits: FL 245 / 700 FT</div>
+          <div>Airspace: Class A above FL 195</div>
+          <div>Airspace: Class C below FL 195</div>
+        </div>
+      )}
       <MapContainer
         center={center}
         zoom={1}
@@ -165,6 +179,11 @@ export function FirMapInner({ firPoints }: FirMapInnerProps) {
               })
             }}
           />
+        )}
+
+        {/* Sal TMA overlay */}
+        {showSalTma && (
+          <SalTmaLayer />
         )}
 
         {/* Fit bounds to FIR points */}
