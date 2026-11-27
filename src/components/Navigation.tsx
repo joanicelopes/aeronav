@@ -1,22 +1,43 @@
 "use client"
 
-import { Map, Search, Menu, X } from 'lucide-react';
+import { Map, Search, Menu, X, FileText } from 'lucide-react';
 import { Plane } from "@/components/ui/plane";
 import { Globe } from "@/components/ui/Globe";
 import { Compass } from "@/components/ui/Compass";
 import { ThemeToggle } from "./theme-toggle";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 export function Navigation() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
+  const [isHidden, setIsHidden] = useState(false);
+  const lastScrollY = useRef(0);
+
+  // Hide the bar when scrolling down, bring it back when scrolling up
+  useEffect(() => {
+    const onScroll = () => {
+      const y = window.scrollY;
+      const delta = y - lastScrollY.current;
+      if (Math.abs(delta) < 8) return; // ignore tiny jitters
+      setIsHidden(delta > 0 && y > 80);
+      lastScrollY.current = y;
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  // Always show it again when changing page
+  useEffect(() => {
+    setIsHidden(false);
+  }, [pathname]);
 
   const navItems = [
     { href: '/', label: 'Airport Finder', icon: Compass },
-    { href: '/map', label: 'Map', icon: Globe }
+    { href: '/map', label: 'Map', icon: Globe },
+    { href: '/notam', label: 'NOTAM', icon: FileText }
   ];
 
   // "/" and "/airport/..." both belong to the finder
@@ -29,7 +50,11 @@ export function Navigation() {
 
 
   return (
-    <div className="fixed top-0 left-0 right-0 z-50 p-3 sm:p-6">
+    <div
+      className={`fixed top-0 left-0 right-0 z-50 p-3 sm:p-6 transition-transform duration-300 ${
+        isHidden && !isMobileMenuOpen ? "-translate-y-full" : "translate-y-0"
+      }`}
+    >
       <div className="max-w-4xl mx-auto">
         {/* Glass navigation bar */}
         <nav className="backdrop-blur-lg bg-white/10 border border-white/20 rounded-2xl px-4 py-3 sm:px-6 sm:py-4 shadow-lg">
