@@ -32,8 +32,9 @@ export function AirportMapInner({ airport }: AirportMapInnerProps) {
         className="rounded-2xl"
       >
         <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
-          url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
+          attribution="Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ"
+          url="https://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}"
+          maxZoom={16}
         />
         <Marker position={position}>
           <Popup className="custom-popup">

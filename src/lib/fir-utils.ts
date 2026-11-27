@@ -4,6 +4,7 @@ export interface FirPoint {
   name: string
   latitude: number
   longitude: number
+  remark?: string
 }
 
 /**
@@ -113,7 +114,7 @@ export function calculateFirCenter(firPoints: FirPoint[]): [number, number] {
  * @param firPoints - Array of FIR points
  * @returns Bounds object for Leaflet
  */
-export function calculateFirBounds(firPoints: FirPoint[]) {
+export function calculateFirBounds(firPoints: FirPoint[]): [[number, number], [number, number]] {
   if (firPoints.length === 0) {
     return [[0, 0], [0, 0]]
   }

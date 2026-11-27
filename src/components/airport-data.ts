@@ -18,8 +18,3 @@ export interface Airport {
   country_name: string
   metar?: MetarData | null
 }
-
-export function findAirportByCode(code: string): Airport | undefined {
-  // This function is now handled in the component since we load data dynamically
-  return undefined
-}

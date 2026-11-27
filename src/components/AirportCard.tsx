@@ -94,7 +94,7 @@ export function AirportCard({ airport }: AirportCardProps) {
                     <div className="flex items-center">
                       <Clock className="w-3 h-3 mr-1" />
                       <span>
-                        Updated: {airport.metar.reportTime.toUTCString()}
+                        Observed: {airport.metar.reportTime.toUTCString()}
                       </span>
                     </div>
                     <span className="text-orange-400 opacity-0 group-hover:opacity-100 transition-opacity">

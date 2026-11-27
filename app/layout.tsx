@@ -3,6 +3,7 @@ import type { Metadata } from "next"
 import { JetBrains_Mono, Montserrat } from "next/font/google"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
+import { Navigation } from "@/components/Navigation"
 
 const jetbrainsMono = JetBrains_Mono({ subsets: ["latin"] })
 const montserrat = Montserrat({ subsets: ["latin"] })
@@ -37,7 +38,10 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <div className="min-h-screen relative overflow-hidden">
+            <Navigation />
+            {children}
+          </div>
         </ThemeProvider>
       </body>
     </html>

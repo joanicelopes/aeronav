@@ -152,8 +152,9 @@ export function FirMapInner({ firPoints }: FirMapInnerProps) {
         className="rounded-2xl"
       >
         <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
-          url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
+          attribution="Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ"
+          url="https://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}"
+          maxZoom={16}
         />
         
         {/* Global FIR boundaries overlay */}
@@ -191,7 +192,7 @@ export function FirMapInner({ firPoints }: FirMapInnerProps) {
         
         {/* FIR Point Markers with toggles */}
         {firPoints.map((point, index) => {
-          const isTma = (point as any).remark ? String((point as any).remark).toUpperCase().includes('TMA') : false
+          const isTma = point.remark ? point.remark.toUpperCase().includes('TMA') : false
           if ((isTma && !showTmaPoints) || (!isTma && !showFirPoints)) return null
           return (
             <React.Fragment key={`${point.name}-${index}`}>
